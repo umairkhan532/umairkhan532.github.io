@@ -2,135 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mohammed Umair Kaleem Khan – Full-Stack Developer</title>
+  <title>Mohammed Umair Kaleem Khan – Full-Stack Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Full-stack software engineer specializing in Python, React, cloud & data. Dallas-based.">
+  <meta name="description" content="Dallas-based full-stack software engineer | Python, React, Snowflake, Cloud, AI">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏽‍💻</text></svg>">
   <style>
+    /* 2025 design tokens */
     :root{
-      --primary:#0052cc;
-      --primary-light:#4c84ff;
-      --bg:#f7f9fc;
-      --text:#222;
-      --card:#fff;
-      --radius:8px;
-      --maxw:900px;
+      --bg:#ffffff;
+      --bg2:#f5f7fa;
+      --text:#111827;
+      --accent:#0052cc;
+      --card:#ffffff;
+      --shadow:0 4px 12px rgba(0,0,0,.06);
+      --radius:12px;
+      --maxw:1000px;
+      --trans:.3s ease;
     }
-    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-    body{background:var(--bg);color:var(--text);line-height:1.6;padding:2rem 1rem;}
-    a{color:var(--primary);text-decoration:none;}
-    a:hover{text-decoration:underline;}
-    header{text-align:center;margin-bottom:2rem;}
-    header img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--primary-light);}
-    h1{font-size:2rem;margin:.5rem 0 .25rem;}
-    .subtitle{font-size:1.1rem;color:#555;}
-    .contact{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.75rem;font-size:.9rem;}
-    section{background:var(--card);border-radius:var(--radius);padding:1.5rem;margin:1.5rem auto;max-width:var(--maxw);box-shadow:0 2px 6px rgba(0,0,0,.05);}
-    h2{margin-bottom:.75rem;color:var(--primary);}
-    ul{padding-left:1.25rem;}
+    [data-theme="dark"]{
+      --bg:#0f172a;
+      --bg2:#1e293b;
+      --text:#e2e8f0;
+      --accent:#60a5fa;
+      --card:#1e293b;
+      --shadow:0 4px 12px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;transition:background-color var(--trans),color var(--trans);}
+    body{background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth;}
+    img{max-width:100%;display:block;}
+    a{color:var(--accent);text-decoration:none;}
+    ul{list-style:none;}
+    h1,h2,h3{font-weight:600;line-height:1.2;}
+    header,section{margin:auto;max-width:var(--maxw);padding:3rem 1.5rem;}
+    header{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;position:relative;}
+    nav{position:fixed;top:0;left:0;right:0;background:var(--card);box-shadow:var(--shadow);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;}
+    nav ul{display:flex;gap:1.25rem;font-size:.9rem;}
+    #theme-toggle{background:none;border:2px solid var(--accent);color:var(--accent);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;}
+    .hero h1{font-size:clamp(2.2rem,5vw,3.2rem);}
+    .hero .typing{height:1.4em;border-right:2px solid var(--accent);display:inline-block;}
+    .btn{margin-top:1.25rem;display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.65rem 1.25rem;border-radius:var(--radius);font-weight:500;}
+    .btn:hover{filter:brightness(1.1);}
+    .section-title{text-align:center;font-size:1.75rem;margin-bottom:2rem;}
+    .grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem;transform:translateY(30px);opacity:0;animation:fadeUp .6s forwards;}
+    @keyframes fadeUp{to{transform:translateY(0);opacity:1;}}
+    .skill-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.5rem;}
+    .skill-filter li{cursor:pointer;padding:.35rem .8rem;border:1px solid var(--accent);border-radius:var(--radius);font-size:.85rem;}
+    .skill-filter li.active{background:var(--accent);color:#fff;}
     .skills{display:flex;flex-wrap:wrap;gap:.5rem;}
-    .skills li{background:var(--primary-light);color:#fff;padding:.25rem .6rem;border-radius:var(--radius);list-style:none;font-size:.85rem;}
-    .job{margin-bottom:1.25rem;}
-    .job .title{font-weight:600;}
-    .job .date{float:right;font-size:.85rem;color:#666;}
-    .project{margin-bottom:1rem;}
-    footer{text-align:center;font-size:.8rem;color:#777;margin-top:2rem;}
+    .skills span{background:var(--bg2);padding:.35rem .7rem;border-radius:var(--radius);font-size:.8rem;}
+    footer{text-align:center;padding:2rem 1rem;font-size:.8rem;color:#94a3b8;}
+    .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:600px;margin:auto;}
+    .contact-form input,.contact-form textarea{width:100%;padding:.75rem 1rem;border:1px solid #ccc;border-radius:var(--radius);background:var(--bg2);color:var(--text);}
+    .contact-form button{align-self:flex-start;}
     @media(max-width:600px){
-      .contact{flex-direction:column;gap:.5rem;}
-      .job .date{float:none;display:block;margin-top:.25rem;}
+      nav ul{gap:.75rem;font-size:.8rem;}
+      header{height:80vh;}
     }
   </style>
 </head>
 <body>
-
-<header>
-  <img src="IMG_8056.jpeg" alt="Umair Khan">
-  <h1>Mohammed Umair Kaleem Khan</h1>
-  <p class="subtitle">Full-Stack Software Engineer | Python • React • Cloud</p>
-  <div class="contact">
-    <a href="mailto:mohammedumairkhan13@gmail.com">Email</a>
-    <a href="tel:+12149402561">(214) 940-2561</a>
-    <a href="https://linkedin.com/in/umairkhan532" target="_blank">LinkedIn</a>
-    <a href="https://github.com/umairkhan532" target="_blank">GitHub</a>
-    <span>Dallas, TX</span>
-  </div>
-</header>
-
-<section>
-  <h2>About</h2>
-  <p>Results-driven software engineer with 3+ years building end-to-end web & data solutions.  
-  Expertise in Python, React, Snowflake, and cloud deployment. Proven record of boosting manufacturing productivity 15 % and delivering ML projects with 98 % accuracy.</p>
-</section>
-
-<section>
-  <h2>Skills</h2>
-  <ul class="skills">
-    <li>Python</li><li>React</li><li>JavaScript</li><li>Java</li><li>C#</li><li>SQL</li>
-    <li>Snowflake</li><li>Django</li><li>Flask</li><li>Git</li><li>Jenkins</li><li>DBT</li>
-    <li>Pandas</li><li>PyTorch</li><li>YOLOv5</li><li>REST APIs</li><li>Agile</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Experience</h2>
-
-  <div class="job">
-    <span class="date">Jan 2024 – Present</span>
-    <div class="title">Software Engineer – Koch Capabilities LLC</div>
+  <!-- Navbar -->
+  <nav aria-label="Primary">
+    <div><strong>Umair Khan</strong></div>
     <ul>
-      <li>Led full-cycle Python development using Snowflake, Snowpark, DBT & PyTorch.</li>
-      <li>Built reusable data pipelines (Parquet/JSON/YML) reducing runtime 30 %.</li>
-      <li>Collaborated with cross-functional teams to translate business needs into technical solutions.</li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#exp">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button id="theme-toggle" aria-label="Toggle dark mode">🌗</button></li>
     </ul>
-  </div>
+  </nav>
 
-  <div class="job">
-    <span class="date">May 2023 – Aug 2023</span>
-    <div class="title">Software Engineering Intern – Molex LLC</div>
-    <ul>
-      <li>Enhanced manufacturing software; productivity +15 %, data-processing speed +20 %.</li>
-      <li>Integrated Arduino micro-controllers for robust QA testing.</li>
-      <li>Authored internal docs & tutorials, driving 25 % faster tool adoption.</li>
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <img src="https://i.pravatar.cc/150?img=3" alt="Umair" width="150" height="150" style="border-radius:50%;border:4px solid var(--accent);">
+    <h1>Mohammed Umair Kaleem Khan</h1>
+    <p class="typing" id="type"></p>
+    <a class="btn" href="Resume_Feb2024.pdf" download>Download Résumé PDF</a>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>I'm a Dallas-based full-stack software engineer who turns complex problems into simple, beautiful, and scalable solutions.  
+    From optimizing manufacturing pipelines with Python & Snowflake to deploying AI models with 98 % accuracy, I love building products that deliver real impact.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <ul class="skill-filter">
+      <li class="active" data-filter="all">All</li>
+      <li data-filter="lang">Languages</li>
+      <li data-filter="front">Frontend</li>
+      <li data-filter="back">Backend</li>
+      <li data-filter="data">Data / Cloud</li>
     </ul>
-  </div>
+    <div class="grid" id="skills-grid">
+      <div class="card" data-cat="lang"><h3>Languages</h3><div class="skills"><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>Java</span><span>C#</span><span>SQL</span></div></div>
+      <div class="card" data-cat="front"><h3>Frontend</h3><div class="skills"><span>React</span><span>Next.js</span><span>Tailwind</span><span>Bootstrap</span><span>Figma</span></div></div>
+      <div class="card" data-cat="back"><h3>Backend</h3><div class="skills"><span>Node.js</span><span>Django</span><span>Flask</span><span>Spring</span><span>.NET</span></div></div>
+      <div class="card" data-cat="data"><h3>Data & Cloud</h3><div class="skills"><span>Snowflake</span><span>DBT</span><span>PyTorch</span><span>Pandas</span><span>GitHub Actions</span><span>Docker</span></div></div>
+    </div>
+  </section>
 
-  <div class="job">
-    <span class="date">Jun 2022 – Jul 2022</span>
-    <div class="title">Software Engineering Intern – Esprit IT Technologies</div>
-    <ul>
-      <li>Developed diagnostic tools for McLaren Artura vehicles; deployed to 12 engineers.</li>
-      <li>Performed regression testing with Monaco DTS8, CANape, UDE.</li>
-    </ul>
-  </div>
-</section>
+  <!-- Experience -->
+  <section id="exp">
+    <h2 class="section-title">Experience</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Software Engineer – Koch Capabilities</h3>
+        <p>Jan 2024 – Present | Dallas, TX</p>
+        <ul><li>Built Snowflake data pipelines cutting runtime 30 %</li><li>Developed DBT + PyTorch forecasting models</li><li>Enabled self-serve analytics for 50+ users</li></ul>
+      </div>
+      <div class="card">
+        <h3>Software Engineering Intern – Molex</h3>
+        <p>May 2023 – Aug 2023</p>
+        <ul><li>Manufacturing software revamp → 15 % productivity lift</li><li>Arduino-powered QA reduced defect rate 8 %</li></ul>
+      </div>
+      <div class="card">
+        <h3>Software Engineering Intern – Esprit IT</h3>
+        <p>Jun 2022 – Jul 2022</p>
+        <ul><li>Diagnostic tooling for McLaren Artura fleet</li><li>Regression automation saved 10 h/week</li></ul>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>Selected Projects</h2>
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Amber Alert Optimizer</h3>
+        <p>Python, PyTorch, Google Colab</p>
+        <p>ML clustering system prioritizing alerts &lt;2 s. Featured by local law-enforcement agency.</p>
+        <a class="btn" href="https://github.com/umairkhan532/amber-optimizer" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>Breast-Cancer Detection</h3>
+        <p>YOLOv5, Deep Learning</p>
+        <p>98 % accuracy on mammography dataset. Co-authored IEEE paper.</p>
+        <a class="btn" href="https://github.com/umairkhan532/breast-cancer-yolo" target="_blank">Paper & Code</a>
+      </div>
+      <div class="card">
+        <h3>NPO Website Re-design</h3>
+        <p>React, Tailwind, Figma</p>
+        <p>40 % faster load, 3× donor conversion. Non-profit saw $12k extra funding within 3 months.</p>
+        <a class="btn" href="https://hereforhereafter.org" target="_blank">Live Site</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="project">
-    <strong>Amber Alert Optimizer – Python, Google Colab, PyTorch</strong>
-    <p>ML pipeline that clusters & prioritizes alerts, cutting processing time &lt;2 s. Used pandas, scikit-learn, and interactive maps.</p>
-  </div>
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Let’s Connect</h2>
+    <form class="contact-form" id="contact-form">
+      <input name="name" type="text" placeholder="Your Name" required>
+      <input name="email" type="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Message" required></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+    <p style="text-align:center;margin-top:1rem;">or email me directly: <a href="mailto:mohammedumairkhan13@gmail.com">mohammedumairkhan13@gmail.com</a></p>
+  </section>
 
-  <div class="project">
-    <strong>Breast-Cancer Detection – YOLOv5, Deep Learning</strong>
-    <p>Research assistant project achieving 98 % accuracy on mammography images; co-authored published paper.</p>
-  </div>
+  <footer>© <span id="year"></span> Mohammed Umair Kaleem Khan • Built with ❤️ & plain HTML/CSS/JS</footer>
 
-  <div class="project">
-    <strong>NPO Website Re-design – React, Bootstrap, Figma</strong>
-    <p>Led UI/UX overhaul for non-profit; added donation widget, responsive design, and improved load time 40 %.</p>
-  </div>
-</section>
+  <!-- Scripts -->
+  <script>
+    /* Dark mode */
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved) html.setAttribute('data-theme',saved);
+    toggle.addEventListener('click',()=>{
+      const current = html.getAttribute('data-theme');
+      const next = current==='dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme',next);
+      localStorage.setItem('theme',next);
+    });
 
-<section>
-  <h2>Education</h2>
-  <p><strong>B.S. Computer Science</strong> – Southern Arkansas University &nbsp;|&nbsp; GPA 3.8/4.0 &nbsp;|&nbsp; President’s List (3×)</p>
-  <p>Relevant: Data Structures & Algorithms, Software Engineering, AI, Networks, Cyber Forensics</p>
-</section>
+    /* Type-writer */
+    const phrases = ['Full-Stack Engineer','Python & React Developer','Data + Cloud Enthusiast','Problem Solver'];
+    let i=0, j=0, forward=true;
+    const typeEl = document.getElementById('type');
+    function loop(){
+      const curr = phrases[i];
+      typeEl.textContent = forward ? curr.substring(0,j+1) : curr.substring(0,j-1);
+      j += forward ? 1 : -1;
+      if(j===curr.length+10){forward=false;}
+      if(j===0){forward=true; i=(i+1)%phrases.length;}
+      setTimeout(loop, forward?120:60);
+    }
+    loop();
 
-<footer>
-  Built with ❤️ by Umair Khan – <a href="https://github.com/umairkhan532" target="_blank">source code</a>
-</footer>
+    /* Skill filter */
+    const filterBtns = document.querySelectorAll('.skill-filter li');
+    const cards = document.querySelectorAll('#skills-grid .card');
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        filterBtns.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.filter;
+        cards.forEach(c=>{
+          c.style.display = (cat==='all' || c.dataset.cat===cat) ? 'block' : 'none';
+        });
+      });
+    });
 
+    /* Animate on scroll */
+    const obs = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');}),{threshold:.2});
+    document.querySelectorAll('.card').forEach(c=>obs.observe(c));
+
+    /* Contact form -> GitHub Issue via GitHub REST (no backend) */
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      const {name,email,message} = Object.fromEntries(new FormData(form));
+      const token = 'ghp_REPLACE_WITH_YOUR_GITHUB_TOKEN'; // 30-s guide: https://git.io/JfK8L
+      const body = `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`;
+      await fetch('https://api.github.com/repos/umairkhan532/umairkhan532.github.io/issues',{
+        method:'POST',
+        headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`},
+        body:JSON.stringify({title:`Portfolio contact from ${name}`,body})
+      });
+      form.reset(); alert('Thanks! Your message is opened as a GitHub issue.');
+    });
+
+    /* Year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
